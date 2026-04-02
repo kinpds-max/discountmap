@@ -95,5 +95,29 @@ const SAMPLE_ONLINE_DATA = [
     type: "Official",
     isVerified: true,
     thumbnail: "https://images.unsplash.com/photo-1589131008225-773bc492488d?w=500&q=80"
+  },
+  {
+    id: 13,
+    name: "성수동 명품 팝업 '26 앵콜 공구 (발렌시아가 외)",
+    price: "450,000원",
+    original_price: "920,000원",
+    discount: "51.1%",
+    link: "https://naver.com/",
+    category: "Shopping",
+    type: "Official",
+    isVerified: true,
+    thumbnail: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80"
+  },
+  {
+    id: 14,
+    name: "전국 최저가 '제과명장 럭키박스' (선착순 100명)",
+    price: "19,900원",
+    original_price: "60,000원",
+    discount: "66.8%",
+    link: "https://coupang.com/",
+    category: "Food",
+    type: "Official",
+    isVerified: true,
+    thumbnail: "https://images.unsplash.com/photo-1558961312-50346c69b11b?w=500&q=80"
   }
 ];

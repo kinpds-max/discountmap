@@ -19,15 +19,30 @@
                 <i class="fa-solid fa-bolt-lightning" style="color: #ff9f0a;"></i>
                 전국<span>허브</span>
             </div>
-            <nav class="nav-links">
+            <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
+                <div id="user-wisdom-level" title="나의 지혜 등급: 할인 명장">
+                    <i class="fa-solid fa-medal" style="color: #ffd700;"></i>
+                    <span style="font-size: 0.7rem; font-weight: 700;">Lv.7</span>
+                </div>
                 <a href="#" id="btn-share"><i class="fa-solid fa-arrow-up-from-bracket"></i></a>
                 <a href="#" id="btn-notif"><i class="fa-regular fa-bell"></i></a>
+                <button id="btn-login" class="apple-btn-outline">Login</button>
             </div>
         </header>
+
+        <!-- Real-time Ticker -->
+        <div id="real-time-ticker">
+            <span class="pulse-dot"></span> <b>실시간 현황:</b> "방금 성수동 반찬가게 지혜로운 나눔이 등록되었습니다."
+        </div>
 
         <!-- Main Map Area -->
         <div id="map-container">
             <div id="map"></div>
+            
+            <!-- Navigation Controls -->
+            <button id="btn-locate" title="내 위치 찾기">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
             
             <!-- Wisdom Share Button (Crowdsource) -->
             <button id="btn-wisdom" title="지혜 나누기">
@@ -49,8 +64,8 @@
                 </div>
             </div>
 
-            <!-- Online/Offline Switcher -->
-            <div class="toggle-control">
+            <!-- Online/Offline Switcher (Hidden in new tab UI?) -->
+            <div class="toggle-control" style="display: none;">
                 <div class="toggle-item active" id="btn-offline">
                     <i class="fa-solid fa-location-dot"></i>&nbsp; Offline
                 </div>
@@ -64,9 +79,15 @@
         <div class="detail-sheet" id="detail-sheet">
             <div class="sheet-handle"></div>
             <div class="sheet-content">
-                <h2 id="sheet-title">실시간 전국 할인 리스트</h2>
-                <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px;">
-                    <b>2026. 04. 02.</b> 기준 시중가 대비 30% 이상 할인된 '역대급' 정보만 전시 중입니다.
+                <!-- Tab Menu -->
+                <div class="sheet-tabs">
+                    <div class="sheet-tab active" data-tab="Wisdom">민간지혜</div>
+                    <div class="sheet-tab" data-tab="Official">공식매장</div>
+                    <div class="sheet-tab" data-tab="Online">온라인공구</div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px; text-align: center;">
+                    <b id="status-date">2026. 04. 02.</b> 기준 파격 정보입니다.
                 </p>
                 
                 <div id="item-list">
@@ -75,6 +96,32 @@
                         <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--apple-gray)"></i>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- One More Thing: Immersive Detail Modal -->
+        <div id="immersive-modal" class="hidden">
+            <div class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="modal-content">
+                <img id="modal-img" src="" alt="">
+                <h1 id="modal-title">One More Thing...</h1>
+                <div class="savings-visual">
+                    <div class="bar-container">
+                        <div class="bar market" id="market-bar" style="height: 100%;"></div>
+                        <span>시중가</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar discounted" id="discounted-bar" style="height: 30%;"></div>
+                        <span>허브 할인가</span>
+                    </div>
+                    <div class="savings-percent" id="modal-save-percent">- 70%</div>
+                </div>
+                <div class="modal-description" id="modal-desc">
+                    이 할인은 잡스가 설계한 듯 정교한 가격 가치를 제공합니다...
+                </div>
+                <button id="modal-link-btn" class="apple-btn" style="width: 100%; height: 52px; font-size: 1.1rem; margin-top: 30px;">
+                    지금 바로 혜택 받기
+                </button>
             </div>
         </div>
     </div>

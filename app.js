@@ -13,17 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
     initMap();
 
     // 2. UI Elements
-    const btnOffline = document.getElementById('btn-offline');
-    const btnOnline = document.getElementById('btn-online');
-    const detailSheet = document.getElementById('detail-sheet');
-    const itemList = document.getElementById('item-list');
+    const sheetTabs = document.querySelectorAll('.sheet-tab');
+    let currentTab = 'Wisdom'; // Wisdom, Official, Online
+
+    sheetTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            sheetTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentTab = tab.dataset.tab;
+            renderListByTab(currentTab);
+        });
+    });
+
+    document.getElementById('btn-login').addEventListener('click', () => {
+        alert("잡스 감성 로그인: Apple ID로 로그인 기능을 준비 중입니다.");
+    });
+
+    document.getElementById('btn-join').addEventListener('click', () => {
+        alert("잡스 감성 회원가입: 프리미엄 멤버십에 가입하시겠습니까?");
+    });
+
     const btnLocate = document.getElementById('btn-locate');
     const mainSearch = document.getElementById('main-search');
     const pills = document.querySelectorAll('.pill');
 
-    // 3. Event Listeners
-    btnOffline.addEventListener('click', () => { setMode('Offline'); });
-    btnOnline.addEventListener('click', () => { setMode('Online'); });
+    if (btnLocate) {
+        btnLocate.addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    focusMap(pos.coords.latitude, pos.coords.longitude);
+                }, () => alert("위치 정보를 가져올 수 없습니다."));
+            }
+        });
+    }
+
+    if (mainSearch) {
+        mainSearch.addEventListener('input', (e) => {
+            renderList(currentMode, e.target.value.toLowerCase());
+        });
+    }
 
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
@@ -31,37 +59,44 @@ document.addEventListener('DOMContentLoaded', () => {
             pill.classList.add('active');
             currentCategory = pill.dataset.cat;
             renderList(currentMode);
-            updateMapMarkers(currentMode);
         });
     });
 
-    btnLocate.addEventListener('click', () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((pos) => {
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                focusMap(lat, lng);
-                // Add a "You are here" marker
-                L.circleMarker([lat, lng], { color: '#0066cc', radius: 8 }).addTo(map)
-                    .bindPopup("현재 위치").openPopup();
-            }, () => {
-                alert("위치 정보를 가져올 수 없습니다.");
-            });
-        }
-    });
-
-    mainSearch.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        filterBySearch(query);
-    });
-
     document.getElementById('btn-wisdom').addEventListener('click', () => {
-        alert("잡스 감성 제보: '지혜 나누기' 기능이 준비되었습니다. 동네의 숨은 보물을 공유해 주시겠습니까?");
+        alert("잡은 지혜 나누기: 동네의 숨은 보물을 공유해 주시겠습니까?");
     });
 
-    document.getElementById('btn-notif').addEventListener('click', () => {
-        alert("잡스 감성 알림: 현재 위치 기반 3개의 새로운 파격 할인이 발견되었습니다.");
-    });
+    // Real-time Ticker Simulation
+    const ticker = document.getElementById('real-time-ticker');
+    const scenarios = [
+        "방금 성수동 반찬가게 지혜로운 나눔이 등록되었습니다.",
+        "지금 스타벅스 체리블라썸 1+1 행사가 1시간 남았습니다.",
+        "강남역 인근 맥도날드 쿠폰 50명이 사용 중입니다.",
+        "온라인 공동구매: 샤오미 로봇청소기 재고가 5개 남았습니다."
+    ];
+    let scenarioIdx = 0;
+    setInterval(() => {
+        scenarioIdx = (scenarioIdx + 1) % scenarios.length;
+        ticker.innerHTML = `<span class="pulse-dot"></span> <b>실시간 현황:</b> "${scenarios[scenarioIdx]}"`;
+    }, 5000);
+
+    function renderListByTab(tab) {
+        // Map tab to currentMode/Category for simplicity or custom logic
+        if (tab === 'Wisdom') {
+            setMode('Offline'); // Show offline wisdom
+            currentCategory = 'all';
+            currentTab = 'Wisdom';
+        } else if (tab === 'Official') {
+            setMode('Offline');
+            currentCategory = 'all';
+            currentTab = 'Official';
+        } else {
+            setMode('Online');
+            currentCategory = 'all';
+            currentTab = 'Online';
+        }
+        renderList(currentMode);
+    }
 
     document.getElementById('btn-share').addEventListener('click', () => {
         const url = window.location.href;
@@ -109,9 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderList(mode, filterQuery = "") {
         let data = (mode === 'Offline') ? SAMPLE_OFFLINE_DATA : SAMPLE_ONLINE_DATA;
         
-        // Filter by Category
-        if (currentCategory !== 'all') {
-            data = data.filter(item => item.category === currentCategory);
+        // Filter by Tab Type (Official vs Wisdom vs Online)
+        if (currentTab === 'Wisdom') {
+            data = data.filter(item => item.type === 'Wisdom');
+        } else if (currentTab === 'Official') {
+            data = data.filter(item => item.type === 'Official' && item.location);
+        } else if (currentTab === 'Online') {
+            data = data.filter(item => item.type === 'Official' && !item.location);
         }
 
         // Filter by Search
@@ -148,12 +187,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             card.onclick = () => {
-                if(mode === 'Offline') focusMap(item.location.lat, item.location.lng);
-                else window.open(item.link, '_blank');
+                if(item.type !== 'Online' && item.location) focusMap(item.location.lat, item.location.lng);
+                showImmersiveModal(item);
             };
             itemList.appendChild(card);
         });
     }
+
+    function showImmersiveModal(item) {
+        const modal = document.getElementById('immersive-modal');
+        const img = document.getElementById('modal-img');
+        const title = document.getElementById('modal-title');
+        const desc = document.getElementById('modal-desc');
+        const discountBar = document.getElementById('discounted-bar');
+        const percent = document.getElementById('modal-save-percent');
+
+        modal.classList.remove('hidden');
+        img.src = item.thumbnail;
+        title.innerText = item.name;
+        desc.innerText = `${item.name}은(는) 잡스가 설계한 듯 정교한 가격 가치를 제공합니다. 시중가 ${item.original_price} 대비 약 ${item.discount} 할인된 ${item.price}에 만나보세요.`;
+        percent.innerText = `-${item.discount}`;
+
+        // Animate Bar
+        discountBar.style.height = '0%';
+        setTimeout(() => {
+            const h = 100 - parseInt(item.discount);
+            discountBar.style.height = `${h}%`;
+        }, 300);
+
+        document.getElementById('modal-link-btn').onclick = () => {
+            if (item.link) window.open(item.link, '_blank');
+            else alert("매장으로 안내합니다: (내비게이션 연동 시뮬레이션)");
+        };
+    }
+
+    document.querySelector('.modal-close').addEventListener('click', () => {
+        document.getElementById('immersive-modal').classList.add('hidden');
+    });
 
     function updateMapMarkers(mode) {
         // Clear old markers
@@ -168,6 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         data.forEach(item => {
             const marker = L.marker([item.location.lat, item.location.lng]).addTo(map);
+            
+            // Apply Golden Aura for > 50% discount
+            if (parseInt(item.discount) >= 50) {
+                L.circleMarker([item.location.lat, item.location.lng], {
+                    radius: 20,
+                    className: 'golden-aura',
+                    stroke: false,
+                    fillOpacity: 1
+                }).addTo(map);
+            }
+
             marker.bindPopup(`<b>${item.name}</b><br>${item.price} (${item.discount} 할인)`);
             markers.push(marker);
         });
