@@ -56,6 +56,11 @@
             <button id="btn-locate" title="내 위치 찾기">
                 <i class="fa-solid fa-location-crosshairs"></i>
             </button>
+
+            <!-- Floating Estimate Button (New) -->
+            <button id="btn-estimate" title="맞춤 비교견적" style="position: absolute; bottom: 100px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--apple-blue); color: white; border: none; box-shadow: var(--shadow-lg); z-index: 950; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;">
+                <i class="fa-solid fa-calculator"></i>
+            </button>
             
             <!-- Wisdom Share Button (Crowdsource) -->
             <button id="btn-wisdom" title="지혜 나누기">
@@ -153,6 +158,42 @@
                 <button id="modal-link-btn" class="apple-btn" style="width: 100%; height: 52px; font-size: 1.1rem; margin-top: 30px;">
                     지금 바로 혜택 받기
                 </button>
+            </div>
+        </div>
+
+        <!-- Estimate Calculator Modal -->
+        <div id="estimate-modal" class="hidden" style="position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); backdrop-filter:blur(15px); z-index: 4000; display:flex; align-items:center; justify-content:center; padding:20px; transition: opacity 0.3s;">
+            <div style="background:white; width:100%; max-width:400px; border-radius:30px; padding:35px 25px; position:relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2);">
+                <div id="close-estimate" style="position:absolute; top:20px; right:20px; cursor:pointer; font-size:1.5rem; color:var(--apple-gray);"><i class="fa-solid fa-xmark"></i></div>
+                <h2 style="margin-bottom:5px; font-weight:800; font-size:1.6rem; letter-spacing:-0.03em;">스마트 비교견적</h2>
+                <p style="font-size:0.85rem; color:var(--apple-gray); margin-bottom:25px;">사이즈와 수량에 따른 맞춤 최저가를 확인하세요.</p>
+                
+                <div style="margin-bottom:15px;">
+                    <label style="font-size:0.8rem; color:var(--apple-black); font-weight:700;">대상 품목</label>
+                    <select id="est-item" style="width:100%; padding:15px; border-radius:14px; border:1px solid #e5e5ea; background:#f2f2f7; margin-top:8px; font-size:1rem; outline:none; -webkit-appearance: none; appearance: none;">
+                        <option value="15000">프리미엄 바닥매트 (500x500)</option>
+                        <option value="25000">대형 바닥매트 (800x800)</option>
+                        <option value="5000">도매 식자재 박스</option>
+                        <option value="12000">기타 공산품 박스</option>
+                    </select>
+                </div>
+                <div style="display:flex; gap:12px; margin-bottom:25px;">
+                    <div style="flex:1;">
+                        <label style="font-size:0.8rem; color:var(--apple-black); font-weight:700;">면적 (평/m²)</label>
+                        <input type="number" id="est-size" placeholder="예: 30" style="width:100%; padding:15px; border-radius:14px; border:1px solid #e5e5ea; background:#f2f2f7; margin-top:8px; font-size:1rem; outline:none;">
+                    </div>
+                    <div style="flex:1;">
+                        <label style="font-size:0.8rem; color:var(--apple-black); font-weight:700;">필요 수량</label>
+                        <input type="number" id="est-qty" placeholder="개수 입력" style="width:100%; padding:15px; border-radius:14px; border:1px solid #e5e5ea; background:#f2f2f7; margin-top:8px; font-size:1rem; outline:none;">
+                    </div>
+                </div>
+                <button id="btn-calc" class="apple-btn" style="width:100%; padding:16px; font-size:1.1rem; border-radius:16px;">즉시 견적 산출</button>
+                
+                <div id="est-result" class="hidden" style="margin-top:25px; padding:25px 15px; background:linear-gradient(135deg, #f5f5f7, #e5e5ea); border-radius:20px; text-align:center;">
+                    <p style="font-size:0.85rem; color:var(--apple-gray); margin-bottom:8px; font-weight:600;">전국허브 Ai 예상 최저가</p>
+                    <h1 id="est-price" style="color:var(--apple-blue); font-size:2.2rem; margin:0; font-weight:800; letter-spacing:-0.03em; transition: transform 0.2s;">0원</h1>
+                    <p style="font-size:0.75rem; color:#ff3b30; margin-top:12px; font-weight:600;"><i class="fa-solid fa-arrow-trend-down"></i> 일반 소매가 대비 약 45% 절감</p>
+                </div>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         map = L.map('map', {
             zoomControl: false,
             attributionControl: false
-        }).setView([37.544, 127.056], 13);
+        }).setView([37.665, 126.650], 12); // 김포시 누산리 399-6
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             maxZoom: 19
@@ -266,4 +266,49 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.clipboard.writeText(window.location.href);
         alert("링크가 복사되었습니다.");
     };
+
+    // Estimate Calculator Logic
+    const btnEstimate = document.getElementById('btn-estimate');
+    const estimateModal = document.getElementById('estimate-modal');
+    const closeEstimateBtn = document.getElementById('close-estimate');
+    const btnCalc = document.getElementById('btn-calc');
+    const estResult = document.getElementById('est-result');
+    const estPrice = document.getElementById('est-price');
+
+    if (btnEstimate && estimateModal) {
+        btnEstimate.addEventListener('click', () => {
+            estimateModal.classList.remove('hidden');
+        });
+        
+        closeEstimateBtn.addEventListener('click', () => {
+            estimateModal.classList.add('hidden');
+            estResult.classList.add('hidden');
+        });
+
+        btnCalc.addEventListener('click', () => {
+            const itemPrice = parseInt(document.getElementById('est-item').value) || 0;
+            const size = parseInt(document.getElementById('est-size').value) || 0;
+            const qty = parseInt(document.getElementById('est-qty').value) || 0;
+            
+            // Smart sizing calculation
+            let total = 0;
+            if (size > 0 && qty === 0) {
+                total = size * itemPrice; // Assume area based
+            } else if (size === 0 && qty > 0) {
+                total = qty * itemPrice; // Assume unit based
+            } else if (size > 0 && qty > 0) {
+                total = size * qty * itemPrice; // Volume based
+            } else {
+                total = itemPrice; // Default base
+            }
+
+            // UI Feedback
+            estResult.classList.remove('hidden');
+            estPrice.innerText = total.toLocaleString() + '원';
+            
+            // Pop Animation
+            estPrice.style.transform = 'scale(1.1)';
+            setTimeout(() => { estPrice.style.transform = 'scale(1)'; }, 200);
+        });
+    }
 });

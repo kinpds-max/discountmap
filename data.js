@@ -5,6 +5,9 @@
  */
 
 const SAMPLE_OFFLINE_DATA = [
+  /* CATEGORY: HUB (본점) */
+  { id: 0, name: "스타플로어 김포 본점 (매트 도매견적)", price: "맞춤비교견적", original_price: "0원", discount: "최저가 보장", phone: "1660-1195", location: { lat: 37.665, lng: 126.650 }, category: "Tech", type: "Official", icon: "⭐", thumbnail: "https://images.unsplash.com/photo-1581404113222-263a232fba6e?w=500&q=80" },
+  
   /* CATEGORY: FOOD (식당/카페) */
   { id: 1, name: "스타벅스 성수 (체리블라썸 1+1)", price: "6,300원", original_price: "12,600원", discount: "50%", phone: "1522-3232", location: { lat: 37.544, lng: 127.056 }, category: "Cafe", type: "Official", icon: "☕", thumbnail: "https://images.unsplash.com/photo-1541167760496-1628856ab752?w=500&q=80" },
   { id: 2, name: "맥도날드 홍대 (빅맥 세트 쿠폰)", price: "4,600원", original_price: "8,200원", discount: "43.9%", phone: "02-333-1004", location: { lat: 37.555, lng: 126.923 }, category: "Restaurant", type: "Official", icon: "🍔", thumbnail: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&q=80" },
