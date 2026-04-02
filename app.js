@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         closeEstimateBtn.addEventListener('click', () => {
             estimateModal.classList.add('hidden');
-            estResult.classList.add('hidden');
+            estResult.style.display = 'none';
         });
 
         btnCalc.addEventListener('click', () => {
@@ -294,20 +294,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = parseInt(document.getElementById('est-size').value) || 0;
             const qty = parseInt(document.getElementById('est-qty').value) || 0;
             
-            // Smart sizing calculation
             let total = 0;
             if (size > 0 && qty === 0) {
-                total = size * itemPrice; // Assume area based
+                total = size * itemPrice;
             } else if (size === 0 && qty > 0) {
-                total = qty * itemPrice; // Assume unit based
+                total = qty * itemPrice;
             } else if (size > 0 && qty > 0) {
-                total = size * qty * itemPrice; // Volume based
+                total = size * qty * itemPrice;
             } else {
-                total = itemPrice; // Default base
+                alert("면적(평수) 또는 필요 수량을 입력해주세요.");
+                estResult.style.display = 'none';
+                return;
             }
 
             // UI Feedback
-            estResult.classList.remove('hidden');
+            estResult.style.display = 'block';
             estPrice.innerText = total.toLocaleString() + '원';
             
             // Pop Animation
