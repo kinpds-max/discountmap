@@ -294,7 +294,7 @@ header {
   border-radius: 12px;
   padding: 4px;
   margin-bottom: 20px;
-  padding-bottom: 4px; /* Default */
+  width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -306,13 +306,15 @@ header {
 .sheet-tab {
   flex: 1;
   text-align: center;
-  padding: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 8px 2px;
+  font-size: 0.75rem; /* Slightly smaller to fit 5 tabs on mobile */
+  font-weight: 700;
   color: var(--apple-gray);
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.3s;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
 }
 
 .sheet-tab.active {
