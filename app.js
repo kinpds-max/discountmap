@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data = data.filter(item => item.type === 'Errand');
         } else if (currentTab === 'FleaMarket') {
             data = data.filter(item => item.type === 'FleaMarket');
+        } else if (currentTab === 'Service') {
+            data = data.filter(item => item.type === 'Service');
         }
 
         // Category Filtering
@@ -103,13 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${item.type === 'Online' ? '<span class="wisdom-badge" style="background:#5ac8fa;">온라인 공구</span>' : ''}
                         ${item.type === 'Errand' ? '<span class="wisdom-badge" style="background:#34c759;">동네 심부름</span>' : ''}
                         ${item.type === 'FleaMarket' ? '<span class="wisdom-badge" style="background:#d0d0d0; color:black;">중고 직거래</span>' : ''}
+                        ${item.type === 'Service' ? '<span class="wisdom-badge" style="background:#af52de;">재능/서비스</span>' : ''}
                     </div>
                     <p style="font-size:0.75rem; color:var(--apple-gray); margin-top:4px;">
                         ${item.original_price === '0원' ? '' : '정가: <s>' + item.original_price + '</s> • '}
                         ${item.category}
                         ${item.author ? ` • 작성자: ${item.author}` : ''}
                         <span style="float:right; color:var(--apple-blue);">
-                            ${item.type === 'Wisdom' ? '우리동네 보물' : (item.type === 'Private' ? '민간할인' : (item.type === 'Online' ? '전국온라인' : (item.type === 'Errand' ? '심부름' : (item.type === 'FleaMarket' ? '중고마켓' : '공식인증'))))}
+                            ${item.type === 'Wisdom' ? '우리동네 보물' : (item.type === 'Private' ? '민간할인' : (item.type === 'Online' ? '전국온라인' : (item.type === 'Errand' ? '심부름' : (item.type === 'FleaMarket' ? '중고마켓' : (item.type === 'Service' ? '서비스팡팡' : '공식인증')))))}
                         </span>
                     </p>
                 </div>
@@ -135,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (currentTab === 'Official') data = data.filter(item => item.type === 'Official');
         else if (currentTab === 'Errand') data = data.filter(item => item.type === 'Errand');
         else if (currentTab === 'FleaMarket') data = data.filter(item => item.type === 'FleaMarket');
+        else if (currentTab === 'Service') data = data.filter(item => item.type === 'Service');
         else return;
 
         if (currentCategory !== 'all') {

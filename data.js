@@ -37,7 +37,11 @@ const SAMPLE_OFFLINE_DATA = [
 
   /* FLEA MARKET (중고장터) */
   { id: 401, name: "아이폰 15 프로 256GB A급", price: "950,000원", original_price: "1,550,000원", discount: "직거래", phone: "010-1234-5678", location: { lat: 37.660, lng: 126.655 }, category: "Tech", type: "FleaMarket", author: "애플매니아", icon: "📱", thumbnail: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&q=80" },
-  { id: 402, name: "사용 안한 새 바닥매트 10장", price: "30,000원", original_price: "55,000원", discount: "직거래", phone: "010-8888-9999", location: { lat: 37.668, lng: 126.645 }, category: "Life", type: "FleaMarket", author: "김포주민", icon: "📦", thumbnail: "https://images.unsplash.com/photo-1584432743501-7d5c1cb74bd0?w=500&q=80" }
+  { id: 402, name: "사용 안한 새 바닥매트 10장", price: "30,000원", original_price: "55,000원", discount: "직거래", phone: "010-8888-9999", location: { lat: 37.668, lng: 126.645 }, category: "Life", type: "FleaMarket", author: "김포주민", icon: "📦", thumbnail: "https://images.unsplash.com/photo-1584432743501-7d5c1cb74bd0?w=500&q=80" },
+  
+  /* SERVICE SALES (서비스판매) */
+  { id: 501, name: "퍼스널 컬러 진단 1:1 출장", price: "45,000원", original_price: "70,000원", discount: "동네할인", phone: "010-9999-1234", location: { lat: 37.580, lng: 127.000 }, category: "Life", type: "Service", author: "컬러마스터", icon: "🎨", thumbnail: "https://images.unsplash.com/photo-1581090122319-8fab9528eaaa?w=500&q=80" },
+  { id: 502, name: "초등학생 영어 기초 과외", price: "20,000원", original_price: "35,000원", discount: "시간당", phone: "010-3333-4444", location: { lat: 37.661, lng: 126.650 }, category: "Life", type: "Service", author: "대학생", icon: "📚", thumbnail: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80" }
 ];
 
 const SAMPLE_ONLINE_DATA = [

@@ -304,10 +304,9 @@ header {
 }
 
 .sheet-tab {
-  flex: 0 0 auto;
-  min-width: 16%; 
+  flex-shrink: 0;
   text-align: center;
-  padding: 8px 4px;
+  padding: 8px 12px;
   font-size: 0.75rem; /* Slightly smaller to fit 5 tabs on mobile */
   font-weight: 700;
   color: var(--apple-gray);

@@ -104,14 +104,40 @@
         <div class="detail-sheet" id="detail-sheet">
             <div class="sheet-handle"></div>
             <div class="sheet-content">
-                <!-- Tab Menu (Equally Divided Cells) -->
-                <div class="sheet-tabs" style="overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start;">
-                    <div class="sheet-tab active" data-tab="Wisdom">나눔정보</div>
-                    <div class="sheet-tab" data-tab="Private">민간할인</div>
-                    <div class="sheet-tab" data-tab="Official">공식할인</div>
-                    <div class="sheet-tab" data-tab="Online">온라인</div>
-                    <div class="sheet-tab" data-tab="Errand">심부름</div>
-                    <div class="sheet-tab" data-tab="FleaMarket">중고장터</div>
+                <!-- Subcategory Tab Menu with Top Labels -->
+                <div class="sheet-tabs" style="overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; gap:10px; padding-bottom:10px; padding-top:5px; background:transparent;">
+                    
+                    <!-- 무료 Group -->
+                    <div style="display:flex; flex-direction:column; align-items:center; background:var(--apple-white); border:1px solid var(--apple-border); border-radius:16px; padding:8px; box-shadow:var(--shadow-sm); flex-shrink:0;">
+                        <span style="font-size:0.65rem; color:var(--apple-gray); font-weight:800; margin-bottom:6px; letter-spacing:-0.03em;">무료</span>
+                        <div class="sheet-tab active" data-tab="Wisdom" style="margin:0; padding:8px 16px; border-radius:12px;">나눔정보</div>
+                    </div>
+
+                    <!-- 오프라인할인 Group -->
+                    <div style="display:flex; flex-direction:column; align-items:center; background:var(--apple-white); border:1px solid var(--apple-border); border-radius:16px; padding:8px; box-shadow:var(--shadow-sm); flex-shrink:0;">
+                        <span style="font-size:0.65rem; color:var(--apple-gray); font-weight:800; margin-bottom:6px; letter-spacing:-0.03em;">오프라인할인</span>
+                        <div style="display:flex; gap:6px;">
+                            <div class="sheet-tab" data-tab="Private" style="margin:0; padding:8px 16px; border-radius:12px;">민간할인</div>
+                            <div class="sheet-tab" data-tab="Official" style="margin:0; padding:8px 16px; border-radius:12px;">공식할인</div>
+                        </div>
+                    </div>
+
+                    <!-- 온라인할인 Group -->
+                    <div style="display:flex; flex-direction:column; align-items:center; background:var(--apple-white); border:1px solid var(--apple-border); border-radius:16px; padding:8px; box-shadow:var(--shadow-sm); flex-shrink:0;">
+                        <span style="font-size:0.65rem; color:var(--apple-gray); font-weight:800; margin-bottom:6px; letter-spacing:-0.03em;">온라인할인</span>
+                        <div class="sheet-tab" data-tab="Online" style="margin:0; padding:8px 16px; border-radius:12px;">온라인할인</div>
+                    </div>
+
+                    <!-- 돈벌기 Group -->
+                    <div style="display:flex; flex-direction:column; align-items:center; background:var(--apple-white); border:1px solid var(--apple-border); border-radius:16px; padding:8px; box-shadow:var(--shadow-sm); flex-shrink:0;">
+                        <span style="font-size:0.65rem; color:var(--apple-gray); font-weight:800; margin-bottom:6px; letter-spacing:-0.03em;">돈벌기</span>
+                        <div style="display:flex; gap:6px;">
+                            <div class="sheet-tab" data-tab="Errand" style="margin:0; padding:8px 16px; border-radius:12px;">심부름</div>
+                            <div class="sheet-tab" data-tab="Service" style="margin:0; padding:8px 16px; border-radius:12px;">서비스판매</div>
+                            <div class="sheet-tab" data-tab="FleaMarket" style="margin:0; padding:8px 16px; border-radius:12px;">중고장터</div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px; text-align: center;">
