@@ -50,15 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderList(mode, filterQuery = "") {
         if (!itemList) return;
-        let data = (mode === 'Offline') ? SAMPLE_OFFLINE_DATA : SAMPLE_ONLINE_DATA;
+        // Combine all data for list view but filter by type
+        const allData = [...SAMPLE_OFFLINE_DATA, ...SAMPLE_ONLINE_DATA];
+        let data = allData;
         
         // Tab Filtering
         if (currentTab === 'Wisdom') {
             data = data.filter(item => item.type === 'Wisdom');
+        } else if (currentTab === 'Private') {
+            data = data.filter(item => item.type === 'Private');
         } else if (currentTab === 'Official') {
-            data = data.filter(item => item.type === 'Official' && item.location);
-        } else if (currentTab === 'Online') {
-            data = data.filter(item => item.type === 'Official' && !item.location);
+            data = data.filter(item => item.type === 'Official');
         }
 
         // Category Filtering
@@ -113,10 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
         markers = [];
 
         // Determine which data to show on map
-        let data = SAMPLE_OFFLINE_DATA;
+        const allOffline = SAMPLE_OFFLINE_DATA;
+        let data = allOffline;
+        
         if (currentTab === 'Wisdom') data = data.filter(item => item.type === 'Wisdom');
+        else if (currentTab === 'Private') data = data.filter(item => item.type === 'Private');
         else if (currentTab === 'Official') data = data.filter(item => item.type === 'Official');
-        else return; // Online items don't show on map
+        else return;
 
         if (currentCategory !== 'all') {
             data = data.filter(item => item.category === currentCategory);
