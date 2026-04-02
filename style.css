@@ -321,11 +321,41 @@ header {
 }
 
 /* Animation for custom markers */
-.pulse-marker {
-    background: var(--apple-blue);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+/* Wisdom Share Button */
+#btn-wisdom {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff9f0a, #ff3b30);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0 8px 24px rgba(255, 159, 10, 0.4);
+    cursor: pointer;
+    z-index: 950;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#btn-wisdom:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255, 159, 10, 0.5);
+}
+
+#btn-wisdom:active {
+    transform: scale(0.95);
+}
+
+.wisdom-badge {
+    background: #5856d6; /* iOS Purple */
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    margin-left: 8px;
+    font-weight: 600;
 }

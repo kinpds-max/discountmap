@@ -55,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
         filterBySearch(query);
     });
 
+    document.getElementById('btn-wisdom').addEventListener('click', () => {
+        alert("잡스 감성 제보: '지혜 나누기' 기능이 준비되었습니다. 동네의 숨은 보물을 공유해 주시겠습니까?");
+    });
+
     document.getElementById('btn-notif').addEventListener('click', () => {
         alert("잡스 감성 알림: 현재 위치 기반 3개의 새로운 파격 할인이 발견되었습니다.");
     });
@@ -134,10 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="price">
                         ${item.price} 
                         <span class="discount-badge">${item.discount} OFF</span>
+                        ${item.type === 'Wisdom' ? '<span class="wisdom-badge">시민 지혜</span>' : ''}
                     </div>
                     <p style="font-size:0.75rem; color:var(--apple-gray); margin-top:4px;">
                         정가: <s>${item.original_price}</s> • ${item.category}
-                        <span style="float:right; color:var(--apple-blue);">${item.type}</span>
+                        ${item.author ? ` • 제보: ${item.author}` : ''}
+                        <span style="float:right; color:var(--apple-blue);">${item.type === 'Wisdom' ? '우리동네 보물' : item.type}</span>
                     </p>
                 </div>
             `;
