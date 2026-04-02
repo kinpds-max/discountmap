@@ -281,11 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnEstimate && estimateModal) {
         btnEstimate.addEventListener('click', () => {
-            estimateModal.classList.remove('hidden');
+            estimateModal.style.display = 'flex';
         });
         
         closeEstimateBtn.addEventListener('click', () => {
-            estimateModal.classList.add('hidden');
+            estimateModal.style.display = 'none';
             estResult.style.display = 'none';
         });
 
