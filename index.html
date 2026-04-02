@@ -38,9 +38,12 @@
             </div>
         </header>
 
-        <!-- Real-time Ticker -->
-        <div id="real-time-ticker">
-            <span class="pulse-dot"></span> <b>실시간 현황:</b> "방금 성수동 반찬가게 지혜로운 나눔이 등록되었습니다."
+        <!-- Moving Legal & Real-time Ticker -->
+        <div class="marquee-notice">
+            <div class="marquee-content">
+                <span class="pulse-dot"></span> <b>실시간 현황:</b> "방금 김포 본점에 매트 도매 견적이 접수되었습니다." &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="color:#ff3b30;">[공지 및 거래면책]</span> <b>전국허브는 정보 공유 플랫폼입니다. 중고장터, 심부름, 나눔 등 사용자 간의 직거래에 개입하지 않으며, 이로 인해 발생하는 모든 거래의 책임은 당사자에게 귀속됩니다. 안전결제와 직거래를 우선하시기 바랍니다.</b>
+            </div>
         </div>
 
         <!-- Real-time Ranking Bar -->
@@ -101,12 +104,13 @@
             <div class="sheet-handle"></div>
             <div class="sheet-content">
                 <!-- Tab Menu (Equally Divided Cells) -->
-                <div class="sheet-tabs">
+                <div class="sheet-tabs" style="overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start;">
                     <div class="sheet-tab active" data-tab="Wisdom">나눔정보</div>
                     <div class="sheet-tab" data-tab="Private">민간할인</div>
                     <div class="sheet-tab" data-tab="Official">공식할인</div>
                     <div class="sheet-tab" data-tab="Online">온라인</div>
                     <div class="sheet-tab" data-tab="Errand">심부름</div>
+                    <div class="sheet-tab" data-tab="FleaMarket">중고장터</div>
                 </div>
 
                 <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px; text-align: center;">

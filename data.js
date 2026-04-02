@@ -33,7 +33,11 @@ const SAMPLE_OFFLINE_DATA = [
   /* ERRAND (심부름) */
   { id: 301, name: "[급구] 종로 귀금속상가 서류 배달", price: "15,000원", original_price: "0원", discount: "수고비", phone: "010-9999-8888", location: { lat: 37.571, lng: 126.992 }, category: "Life", type: "Errand", author: "금은방 사장님", icon: "🏃", thumbnail: "https://images.unsplash.com/photo-1557002664-cda9fefbd762?w=500&q=80" },
   { id: 302, name: "[부탁] 홍대입구역 짐 보관 (하루)", price: "10,000원", original_price: "0원", discount: "수고비", phone: "010-7777-6666", location: { lat: 37.556, lng: 126.924 }, category: "Life", type: "Errand", author: "여행객", icon: "🎒", thumbnail: "https://images.unsplash.com/photo-1547949003-979f911be264?w=500&q=80" },
-  { id: 303, name: "[부탁] 역삼동 병원 약 처방 픽업", price: "8,000원", original_price: "0원", discount: "수고비", phone: "010-3333-2222", location: { lat: 37.500, lng: 127.036 }, category: "Life", type: "Errand", author: "동네주민", icon: "💊", thumbnail: "https://images.unsplash.com/photo-1584308666744-24d5e172a39a?w=500&q=80" }
+  { id: 303, name: "[부탁] 역삼동 병원 약 처방 픽업", price: "8,000원", original_price: "0원", discount: "수고비", phone: "010-3333-2222", location: { lat: 37.500, lng: 127.036 }, category: "Life", type: "Errand", author: "동네주민", icon: "💊", thumbnail: "https://images.unsplash.com/photo-1584308666744-24d5e172a39a?w=500&q=80" },
+
+  /* FLEA MARKET (중고장터) */
+  { id: 401, name: "아이폰 15 프로 256GB A급", price: "950,000원", original_price: "1,550,000원", discount: "직거래", phone: "010-1234-5678", location: { lat: 37.660, lng: 126.655 }, category: "Tech", type: "FleaMarket", author: "애플매니아", icon: "📱", thumbnail: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&q=80" },
+  { id: 402, name: "사용 안한 새 바닥매트 10장", price: "30,000원", original_price: "55,000원", discount: "직거래", phone: "010-8888-9999", location: { lat: 37.668, lng: 126.645 }, category: "Life", type: "FleaMarket", author: "김포주민", icon: "📦", thumbnail: "https://images.unsplash.com/photo-1584432743501-7d5c1cb74bd0?w=500&q=80" }
 ];
 
 const SAMPLE_ONLINE_DATA = [
