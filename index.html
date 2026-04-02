@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>전국허브 | National Discount Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Kakao Maps API (Requires Key) -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_API_KEY&libraries=services"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Jobs-style Header -->
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-compass"></i>
+                전국<span>허브</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#about">Philosophy</a>
+                <a href="#report">Report</a>
+                <a href="#my">Account</a>
+            </nav>
+        </header>
+
+        <!-- Main Map Area -->
+        <div id="map-container">
+            <div id="map"></div>
+            
+            <!-- Search & Filter Controls -->
+            <div class="floating-overlay">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="지역이나 품목을 검색하세요 (예: 연남동 삼겹살, 아이폰)">
+                </div>
+            </div>
+
+            <!-- Online/Offline Switcher -->
+            <div class="toggle-control">
+                <div class="toggle-item active" id="btn-offline">
+                    <i class="fa-solid fa-location-dot"></i>&nbsp; Offline
+                </div>
+                <div class="toggle-item" id="btn-online">
+                    <i class="fa-solid fa-globe"></i>&nbsp; Online
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Sheet (Sliding Panel) -->
+        <div class="detail-sheet" id="detail-sheet">
+            <div class="sheet-handle"></div>
+            <div class="sheet-content">
+                <h2 id="sheet-title">실시간 전국 할인 리스트</h2>
+                <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px;">
+                    객관적으로 시중가 대비 30% 이상 할인된 정보만 노출됩니다.
+                </p>
+                
+                <div id="item-list">
+                    <!-- Cards will be injected by app.js -->
+                    <div class="loading-state" style="text-align: center; padding: 50px;">
+                        <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--apple-gray)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals & High-end UI Overlays -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
