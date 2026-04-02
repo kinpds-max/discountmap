@@ -29,7 +29,7 @@ const SAMPLE_OFFLINE_DATA = [
 ];
 
 const SAMPLE_ONLINE_DATA = [
-  { id: 201, name: "쿠팡 '26년 골드박스' 애플 M4 워치", price: "320,000원", original_price: "650,000원", discount: "50.7%", phone: "1577-7001", link: "https://www.coupang.com/", category: "Tech", type: "Official", icon: "⌚", thumbnail: "https://images.unsplash.com/photo-1591405351990-4726e33df58b?w=500&q=80" },
-  { id: 204, name: "당근마켓 '동네 공구' 세제 10L", price: "5,000원", original_price: "18,000원", discount: "72.2%", phone: "010-1111-2222", link: "https://daangn.com/", category: "Life", type: "Private", icon: "🧴", thumbnail: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500&q=80" },
-  { id: 202, name: "마켓컬리 '첫구매' 킹크랩 1,000원", price: "1,000원", original_price: "89,000원", discount: "98.8%", phone: "1644-1107", link: "https://www.kurly.com/", category: "Food", type: "Private", icon: "🦀", thumbnail: "https://images.unsplash.com/photo-1588698711431-7e8c07e0c410?w=500&q=80" }
+  { id: 201, name: "쿠팡 '26년 골드박스' 애플 M4 워치", price: "320,000원", original_price: "650,000원", discount: "50.7%", phone: "1577-7001", link: "https://www.coupang.com/", category: "Tech", type: "Online", icon: "⌚", thumbnail: "https://images.unsplash.com/photo-1591405351990-4726e33df58b?w=500&q=80" },
+  { id: 204, name: "당근마켓 '동네 공구' 세제 10L", price: "5,000원", original_price: "18,000원", discount: "72.2%", phone: "010-1111-2222", link: "https://daangn.com/", category: "Life", type: "Online", icon: "🧴", thumbnail: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500&q=80" },
+  { id: 202, name: "마켓컬리 '첫구매' 킹크랩 1,000원", price: "1,000원", original_price: "89,000원", discount: "98.8%", phone: "1644-1107", link: "https://www.kurly.com/", category: "Food", type: "Online", icon: "🦀", thumbnail: "https://images.unsplash.com/photo-1588698711431-7e8c07e0c410?w=500&q=80" }
 ];

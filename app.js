@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data = data.filter(item => item.type === 'Private');
         } else if (currentTab === 'Official') {
             data = data.filter(item => item.type === 'Official');
+        } else if (currentTab === 'Online') {
+            data = data.filter(item => item.type === 'Online');
         }
 
         // Category Filtering
@@ -94,11 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${item.price} 
                         <span class="discount-badge">${item.discount} OFF</span>
                         ${item.type === 'Wisdom' ? '<span class="wisdom-badge">실시간 나눔</span>' : ''}
+                        ${item.type === 'Online' ? '<span class="wisdom-badge" style="background:#5ac8fa;">온라인 공구</span>' : ''}
                     </div>
                     <p style="font-size:0.75rem; color:var(--apple-gray); margin-top:4px;">
                         정가: <s>${item.original_price}</s> • ${item.category}
                         ${item.author ? ` • 제보: ${item.author}` : ''}
-                        <span style="float:right; color:var(--apple-blue);">${item.type === 'Wisdom' ? '우리동네 보물' : '공식인증'}</span>
+                        <span style="float:right; color:var(--apple-blue);">
+                            ${item.type === 'Wisdom' ? '우리동네 보물' : (item.type === 'Private' ? '민간할인' : (item.type === 'Online' ? '전국온라인' : '공식인증'))}
+                        </span>
                     </p>
                 </div>
             `;

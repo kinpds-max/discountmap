@@ -16,8 +16,16 @@
         <!-- Jobs-style Header -->
         <header>
             <div class="logo">
-                <i class="fa-solid fa-bolt-lightning" style="color: #ff9f0a;"></i>
-                전국<span>허브</span>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                        <i class="fa-solid fa-bolt-lightning" style="color: #ff9f0a;"></i>
+                        전국<span style="color: var(--apple-blue);">허브</span>
+                        <span style="font-size: 0.75rem; color: var(--apple-gray); font-weight: 500;">(전국할인지도)</span>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--apple-gray); margin-top: 2px;">
+                        <i class="fa-solid fa-phone" style="color: #ff3b30;"></i> <b>1660-1195</b>
+                    </div>
+                </div>
             </div>
             <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
                 <div id="user-wisdom-level" title="나의 지혜 등급: 할인 명장">
@@ -86,10 +94,11 @@
             <div class="sheet-handle"></div>
             <div class="sheet-content">
                 <!-- Tab Menu -->
-                <div class="sheet-tabs">
-                    <div class="sheet-tab active" data-tab="Wisdom">실시간 나눔정보</div>
-                    <div class="sheet-tab" data-tab="Private">실시간 민간할인정보</div>
-                    <div class="sheet-tab" data-tab="Official">실시간 공식할인정보</div>
+                <div class="sheet-tabs" style="overflow-x: auto; scrollbar-width: none; white-space: nowrap; -webkit-overflow-scrolling: touch;">
+                    <div class="sheet-tab active" data-tab="Wisdom" style="flex: 0 0 auto; padding: 10px 15px;">실시간 나눔정보</div>
+                    <div class="sheet-tab" data-tab="Private" style="flex: 0 0 auto; padding: 10px 15px;">실시간 민간할인정보</div>
+                    <div class="sheet-tab" data-tab="Official" style="flex: 0 0 auto; padding: 10px 15px;">실시간 공식할인정보</div>
+                    <div class="sheet-tab" data-tab="Online" style="flex: 0 0 auto; padding: 10px 15px;">실시간 온라인할인정보</div>
                 </div>
 
                 <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px; text-align: center;">
