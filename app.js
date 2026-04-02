@@ -265,11 +265,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Interaction simulation
     document.getElementById('btn-login').onclick = () => alert("Apple ID 로그인 기능 준비 중");
+    const signUpBtn = document.getElementById('btn-signup');
+    if (signUpBtn) {
+        signUpBtn.onclick = () => alert("회원가입 기능 준비 중 (소셜 플랫폼 연동 예정)");
+    }
     document.getElementById('btn-notif').onclick = () => alert("주변 핫딜 알림이 활성화되었습니다.");
     document.getElementById('btn-share').onclick = () => {
         navigator.clipboard.writeText(window.location.href);
         alert("링크가 복사되었습니다.");
     };
+
+    const reportBtn = document.getElementById('btn-report');
+    if (reportBtn) {
+        reportBtn.onclick = () => {
+            alert("전국허브 고객센터 (하맘 카카오톡 채널)로 이동합니다.\n허위 제보 및 사기 행위 신고시 적극 검토 후 강력 제재합니다.");
+            // Example link for Kakao channel
+            // window.open('https://pf.kakao.com/_xxxx', '_blank');
+        };
+    }
 
     // Estimate Calculator Logic
     const btnEstimate = document.getElementById('btn-estimate');
