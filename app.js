@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data = data.filter(item => item.type === 'Official');
         } else if (currentTab === 'Online') {
             data = data.filter(item => item.type === 'Online');
+        } else if (currentTab === 'Errand') {
+            data = data.filter(item => item.type === 'Errand');
         }
 
         // Category Filtering
@@ -94,15 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${item.name}</h3>
                     <div class="price">
                         ${item.price} 
-                        <span class="discount-badge">${item.discount} OFF</span>
+                        <span class="discount-badge">${item.discount === '수고비' ? '협의' : item.discount + ' OFF'}</span>
                         ${item.type === 'Wisdom' ? '<span class="wisdom-badge">실시간 나눔</span>' : ''}
                         ${item.type === 'Online' ? '<span class="wisdom-badge" style="background:#5ac8fa;">온라인 공구</span>' : ''}
+                        ${item.type === 'Errand' ? '<span class="wisdom-badge" style="background:#34c759;">동네 심부름</span>' : ''}
                     </div>
                     <p style="font-size:0.75rem; color:var(--apple-gray); margin-top:4px;">
-                        정가: <s>${item.original_price}</s> • ${item.category}
-                        ${item.author ? ` • 제보: ${item.author}` : ''}
+                        ${item.original_price === '0원' ? '' : '정가: <s>' + item.original_price + '</s> • '}
+                        ${item.category}
+                        ${item.author ? ` • 제보/요청: ${item.author}` : ''}
                         <span style="float:right; color:var(--apple-blue);">
-                            ${item.type === 'Wisdom' ? '우리동네 보물' : (item.type === 'Private' ? '민간할인' : (item.type === 'Online' ? '전국온라인' : '공식인증'))}
+                            ${item.type === 'Wisdom' ? '우리동네 보물' : (item.type === 'Private' ? '민간할인' : (item.type === 'Online' ? '전국온라인' : (item.type === 'Errand' ? '심부름' : '공식인증')))}
                         </span>
                     </p>
                 </div>
@@ -126,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentTab === 'Wisdom') data = data.filter(item => item.type === 'Wisdom');
         else if (currentTab === 'Private') data = data.filter(item => item.type === 'Private');
         else if (currentTab === 'Official') data = data.filter(item => item.type === 'Official');
+        else if (currentTab === 'Errand') data = data.filter(item => item.type === 'Errand');
         else return;
 
         if (currentCategory !== 'all') {
