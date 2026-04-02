@@ -1,78 +1,58 @@
 /*
  * National Discount Hub Data (April 2026)
- * Deep-Dived Real-Time Data Package (~30 Items)
- * Includes Phone numbers and Theater/Performance categories.
+ * Ultra-Dense Data Overhaul (~55 Items)
+ * Seoul Center Areas: Gangnam, Seongsu, Hongdae, Jongno, Myeogdong.
  */
 
 const SAMPLE_OFFLINE_DATA = [
-  /* --- 실시간 매장할인 (Official) --- */
-  {
-    id: 1,
-    name: "이마트 '26 쓱데이' (한우 50% 반값)",
-    price: "5,400원", original_price: "10,800원", discount: "50%", phone: "1577-1234",
-    location: { lat: 37.5615, lng: 127.0454 }, category: "Grocery", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500&q=80"
-  },
-  {
-    id: 2,
-    name: "대학로 연극 '지혜로운 할인' 타임세일",
-    price: "12,000원", original_price: "35,000원", discount: "65.7%", phone: "02-123-4567",
-    location: { lat: 37.582, lng: 127.002 }, category: "Culture", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=500&q=80"
-  },
-  {
-    id: 3,
-    name: "올리브영 '26 봄 정기세일' (베스트 70%)",
-    price: "12,000원", original_price: "40,000원", discount: "70%", phone: "1577-0101",
-    location: { lat: 37.501, lng: 127.039 }, category: "Life", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&q=80"
-  },
-  {
-    id: 4,
-    name: "버거킹 '올인원' 와퍼 주니어 2개 6,000원",
-    price: "6,000원", original_price: "12,000원", discount: "50%", phone: "080-022-8114",
-    location: { lat: 37.566, lng: 126.978 }, category: "Food", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&q=80"
-  },
-  {
-    id: 110,
-    name: "예술의전당 '26 오케스트라' 당일 잔여석 할인",
-    price: "25,000원", original_price: "120,000원", discount: "79.2%", phone: "02-580-1300",
-    location: { lat: 37.479, lng: 127.011 }, category: "Culture", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1465847736664-285cadb30ae3?w=500&q=80"
-  },
+  /* CATEGORY: FOOD (식당/카페) */
+  { id: 1, name: "스타벅스 성수 (체리블라썸 1+1)", price: "6,300원", original_price: "12,600원", discount: "50%", phone: "1522-3232", location: { lat: 37.544, lng: 127.056 }, category: "Culture", type: "Official", icon: "☕", thumbnail: "https://images.unsplash.com/photo-1541167760496-1628856ab752?w=500&q=80" },
+  { id: 2, name: "맥도날드 홍대 (빅맥 세트 쿠폰)", price: "4,600원", original_price: "8,200원", discount: "43.9%", phone: "02-333-1004", location: { lat: 37.555, lng: 126.923 }, category: "Food", type: "Official", icon: "🍔", thumbnail: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&q=80" },
+  { id: 3, name: "역전우동 강남 (냉모밀 30% 세일)", price: "4,200원", original_price: "6,000원", discount: "30%", phone: "02-555-1234", location: { lat: 37.501, lng: 127.027 }, category: "Food", type: "Official", icon: "🍜", thumbnail: "https://images.unsplash.com/photo-1511910849309-0dffb8785146?w=500&q=80" },
+  { id: 4, name: "백종원의 빽다방 명동 (아메리카노 1,000원)", price: "1,000원", original_price: "2,000원", discount: "50%", phone: "02-777-8888", location: { lat: 37.563, lng: 126.983 }, category: "Food", type: "Official", icon: "🥤", thumbnail: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80" },
+  { id: 5, name: "서브웨이 건대 (오늘의 샌드위치)", price: "5,400원", original_price: "7,800원", discount: "30.7%", phone: "02-444-5555", location: { lat: 37.541, lng: 127.071 }, category: "Food", type: "Official", icon: "🥪", thumbnail: "https://images.unsplash.com/photo-1550507992-eb63ffee0847?w=500&q=80" },
+  { id: 6, name: "메가커피 종로 (텀블러 할인)", price: "1,500원", original_price: "2,000원", discount: "25%", phone: "02-222-3333", location: { lat: 37.570, lng: 126.985 }, category: "Food", type: "Official", icon: "☕", thumbnail: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=500&q=80" },
+  { id: 7, name: "맘스터치 신촌 (싸이버거 세트)", price: "5,200원", original_price: "7,500원", discount: "30.6%", phone: "02-312-9988", location: { lat: 37.559, lng: 126.937 }, category: "Food", type: "Official", icon: "🍗", thumbnail: "https://images.unsplash.com/photo-1594212699903-ec8a3ecc50f1?w=500&q=80" },
+  { id: 8, name: "서가앤쿡 강남 (스테이크 샐러드 런치)", price: "15,800원", original_price: "24,000원", discount: "34.1%", phone: "02-555-6677", location: { lat: 37.498, lng: 127.028 }, category: "Food", type: "Official", icon: "🥩", thumbnail: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500&q=80" },
+  { id: 9, name: "연남동 기사식당 (무제한 백반 7,000원)", price: "7,000원", original_price: "12,000원", discount: "41.6%", phone: "02-333-4455", location: { lat: 37.561, lng: 126.924 }, category: "Food", type: "Wisdom", icon: "🍱", thumbnail: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80" },
+  { id: 10, name: "고속터미널 '지혜' 칼국수", price: "5,500원", original_price: "9,000원", discount: "38.8%", phone: "02-536-1122", location: { lat: 37.505, lng: 127.004 }, category: "Food", type: "Wisdom", icon: "🍜", thumbnail: "https://images.unsplash.com/photo-1547928501-a2673417186a?w=500&q=80" },
 
-  /* --- 실시간 나눔정보 (Wisdom) --- */
-  {
-    id: 101,
-    name: "[울동네 보물] 성수 반찬가게 마감 4팩 1만원",
-    price: "10,000원", original_price: "24,000원", discount: "58%", phone: "02-999-8888",
-    location: { lat: 37.5446, lng: 127.056 }, category: "Food", type: "Wisdom",
-    author: "알뜰한 주부님", thumbnail: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80"
-  },
-  {
-    id: 102,
-    name: "[나눔] 혜화동 소극장 배우 할인 티켓 배포",
-    price: "5,000원", original_price: "40,000원", discount: "87.5%", phone: "010-5555-4444",
-    location: { lat: 37.583, lng: 127.001 }, category: "Culture", type: "Wisdom",
-    author: "열혈배우", thumbnail: "https://images.unsplash.com/photo-1503091314489-3ae793f0b2f6?w=500&q=80"
-  }
+  /* CATEGORY: GROCERY (마트/식품) */
+  { id: 21, name: "이마트 왕십리 (삼겹살 100g 990원)", price: "990원", original_price: "2,500원", discount: "60.4%", phone: "1577-1234", location: { lat: 37.561, lng: 127.037 }, category: "Grocery", type: "Official", icon: "🥩", thumbnail: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500&q=80" },
+  { id: 22, name: "홈플러스 가양 (치킨 1+1)", price: "7,900원", original_price: "15,800원", discount: "50%", phone: "02-3660-8000", location: { lat: 37.558, lng: 126.862 }, category: "Grocery", type: "Official", icon: "🍗", thumbnail: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=500&q=80" },
+  { id: 23, name: "롯데마트 제타플렉스 (우유 1L 2개입)", price: "4,600원", original_price: "7,800원", discount: "41.0%", phone: "02-2117-2500", location: { lat: 37.513, lng: 127.100 }, category: "Grocery", type: "Official", icon: "🥛", thumbnail: "https://images.unsplash.com/photo-1563636619-e91000f88f5d?w=500&q=80" },
+  { id: 24, name: "하나로마트 양재 (딸기 2팩)", price: "9,900원", original_price: "19,800원", discount: "50%", phone: "02-3498-1100", location: { lat: 37.464, lng: 127.039 }, category: "Grocery", type: "Official", icon: "🍓", thumbnail: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=500&q=80" },
+  { id: 25, name: "노브랜드 신촌 (대용량 계란 30구)", price: "3,800원", original_price: "7,500원", discount: "49.3%", phone: "02-313-1234", location: { lat: 37.555, lng: 126.936 }, category: "Grocery", type: "Official", icon: "🥚", thumbnail: "https://images.unsplash.com/photo-1516746334683-bc2a72728f32?w=500&q=80" },
+  { id: 26, name: "GS더프레시 사당 (한우 특가)", price: "12,900원", original_price: "24,000원", discount: "46.2%", phone: "02-588-1234", location: { lat: 37.476, lng: 126.981 }, category: "Grocery", type: "Official", icon: "🥩", thumbnail: "https://images.unsplash.com/photo-1558034859-045ce319d140?w=500&q=80" },
+  { id: 27, name: "CU 성수 (와인 파격세일)", price: "9,900원", original_price: "28,000원", discount: "64.6%", phone: "02-466-1234", location: { lat: 37.545, lng: 127.058 }, category: "Grocery", type: "Official", icon: "🍷", thumbnail: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&q=80" },
+  { id: 28, name: "GS25 강남 (도시락 1+1)", price: "4,500원", original_price: "9,000원", discount: "50%", phone: "02-555-1234", location: { lat: 37.502, lng: 127.037 }, category: "Grocery", type: "Official", icon: "🍱", thumbnail: "https://images.unsplash.com/photo-1582281267102-d12245a44ef6?w=500&q=80" },
+  { id: 29, name: "[보물] 마포 시장 '박스사과' 1만원", price: "10,000원", original_price: "25,000원", discount: "60%", phone: "02-333-1111", location: { lat: 37.546, lng: 126.945 }, category: "Grocery", type: "Wisdom", icon: "🍎", thumbnail: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500&q=80" },
+  { id: 30, name: "[나눔] 경동시장 약재/차류 떨이", price: "3,000원", original_price: "10,000원", discount: "70%", phone: "02-966-1234", location: { lat: 37.578, lng: 127.037 }, category: "Grocery", type: "Wisdom", icon: "🍃", thumbnail: "https://images.unsplash.com/photo-1524310530050-0255c2763f35?w=500&q=80" },
+
+  /* CATEGORY: CULTURE (공연/문화) */
+  { id: 41, name: "대학로 연극 '빨강구두' 타임세일", price: "10,000원", original_price: "45,000원", discount: "77.7%", phone: "02-766-1234", location: { lat: 37.581, lng: 127.002 }, category: "Culture", type: "Wisdom", icon: "🎭", thumbnail: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=500&q=80" },
+  { id: 42, name: "예술의전당 '서커스' 오늘권 할인", price: "25,000원", original_price: "80,000원", discount: "68.7%", phone: "02-580-1300", location: { lat: 37.479, lng: 127.011 }, category: "Culture", type: "Official", icon: "🎪", thumbnail: "https://images.unsplash.com/photo-1465847736664-285cadb30ae3?w=500&q=80" },
+  { id: 43, name: "세종문화회관 '천원의 행복'", price: "1,000원", original_price: "30,000원", discount: "96.6%", phone: "02-399-1000", location: { lat: 37.572, lng: 126.975 }, category: "Culture", type: "Official", icon: "🎻", thumbnail: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500&q=80" },
+  { id: 44, name: "DDP '헬로 키티' 전시회 티켓 1+1", price: "20,000원", original_price: "40,000원", discount: "50%", phone: "02-2153-0000", location: { lat: 37.567, lng: 127.010 }, category: "Culture", type: "Official", icon: "🎨", thumbnail: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500&q=80" },
+  { id: 45, name: "블루스퀘어 '위키드' 잔여석 현장할인", price: "70,000원", original_price: "150,000원", discount: "53.3%", phone: "1544-1591", location: { lat: 37.540, lng: 127.002 }, category: "Culture", type: "Official", icon: "👠", thumbnail: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&q=80" },
+  { id: 46, name: "[나눔] 홍대 길거리 버스킹 '맥주 무료'", price: "0원", original_price: "5,000원", discount: "100%", phone: "010-1234-5678", location: { lat: 37.555, lng: 126.924 }, category: "Culture", type: "Wisdom", icon: "🎸", thumbnail: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=500&q=80" },
+
+  /* CATEGORY: TECH/LIFE (테크/생활) */
+  { id: 51, name: "올리브영 강남 (메디힐 마스크 반값)", price: "1,500원", original_price: "3,000원", discount: "50%", phone: "1577-0101", location: { lat: 37.502, lng: 127.039 }, category: "Life", type: "Official", icon: "🧴", thumbnail: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&q=80" },
+  { id: 52, name: "다이소 종로 (캠핑 랜턴 5,000원)", price: "5,000원", original_price: "12,000원", discount: "58.3%", phone: "1588-4444", location: { lat: 37.570, lng: 126.983 }, category: "Life", type: "Official", icon: "🔦", thumbnail: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80" },
+  { id: 53, name: "프리스비 용산 (아이폰 17 전시몰 세일)", price: "980,000원", original_price: "1,550,000원", discount: "36.7%", phone: "02-2120-7777", location: { lat: 37.529, lng: 126.964 }, category: "Tech", type: "Official", icon: "📱", thumbnail: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&q=80" },
+  { id: 54, name: "신도림 테크노마트 (SSD 2TB 특가)", price: "89,000원", original_price: "175,000원", discount: "49.1%", phone: "02-2111-1234", location: { lat: 37.507, lng: 126.890 }, category: "Tech", type: "Official", icon: "💾", thumbnail: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=500&q=80" }
 ];
 
 const SAMPLE_ONLINE_DATA = [
-  /* --- 실시간 온라인공구 (Official/Online) --- */
-  {
-    id: 11,
-    name: "쿠팡 '26년 골드박스' 갤럭시 버즈 3 프로 급처",
-    price: "124,000원", original_price: "249,000원", discount: "50.2%", phone: "1577-7001",
-    link: "https://www.coupang.com/", category: "Tech", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80"
-  },
-  {
-    id: 121,
-    name: "티켓링크 '뮤지컬 시카고' 단독 최저가 공구",
-    price: "68,000원", original_price: "150,000원", discount: "54.7%", phone: "1588-7890",
-    link: "https://ticketlink.co.kr/", category: "Culture", type: "Official",
-    thumbnail: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&q=80"
-  }
+  { id: 201, name: "쿠팡 '26년 골드박스' 애플 M4 워치", price: "320,000원", original_price: "650,000원", discount: "50.7%", phone: "1577-7001", link: "https://www.coupang.com/", category: "Tech", type: "Official", icon: "⌚", thumbnail: "https://images.unsplash.com/photo-1591405351990-4726e33df58b?w=500&q=80" },
+  { id: 202, name: "마켓컬리 '첫구매' 킹크랩 1,000원", price: "1,000원", original_price: "89,000원", discount: "98.8%", phone: "1644-1107", link: "https://www.kurly.com/", category: "Food", type: "Official", icon: "🦀", thumbnail: "https://images.unsplash.com/photo-1588698711431-7e8c07e0c410?w=500&q=80" },
+  { id: 203, name: "네이버 도착보장 '생수 24병' 반값", price: "7,900원", original_price: "16,000원", discount: "50.6%", phone: "1588-3820", link: "https://shopping.naver.com/", category: "Grocery", type: "Official", icon: "💧", thumbnail: "https://images.unsplash.com/photo-1560023907-5f339617ea30?w=500&q=80" },
+  { id: 204, name: "당근마켓 '동네 공구' 세제 10L", price: "5,000원", original_price: "18,000원", discount: "72.2%", phone: "010-1111-2222", link: "https://daangn.com/", category: "Life", type: "Wisdom", icon: "🧴", thumbnail: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500&q=80" },
+  { id: 205, name: "알리 'Choice' 4K 프로젝터 80% 할인", price: "45,000원", original_price: "320,000원", discount: "85.9%", phone: "070-123-4567", link: "https://aliexpress.com/", category: "Tech", type: "Official", icon: "🎬", thumbnail: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80" },
+  { id: 206, name: "야놀자 '벚꽃특가' 호캉스 전액캐시백", price: "0원", original_price: "250,000원", discount: "100%", phone: "1644-1346", link: "https://yanolja.com/", category: "Travel", type: "Official", icon: "🏨", thumbnail: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" },
+  { id: 207, name: "무신사 '타임세일' 나이키 운동화", price: "39,000원", original_price: "149,000원", discount: "73.8%", phone: "1544-7199", link: "https://musinsa.com/", category: "Shopping", type: "Official", icon: "👟", thumbnail: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80" },
+  { id: 208, name: "지마켓 '스마일클럽' 캠핑의자 1+1", price: "24,000원", original_price: "60,000원", discount: "60%", phone: "1566-5701", link: "https://gmarket.co.kr/", category: "Life", type: "Official", icon: "🪑", thumbnail: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80" },
+  { id: 209, name: "지그재그 '직잭세일' 가디건 특적", price: "9,900원", original_price: "39,000원", discount: "74.6%", phone: "1670-8050", link: "https://zigzag.kr/", category: "Shopping", type: "Official", icon: "👚", thumbnail: "https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?w=500&q=80" },
+  { id: 210, name: "배달의민족 '포장전용' 5,000원 쿠폰", price: "0원", original_price: "5,000원", discount: "100%", phone: "1600-0987", link: "https://baemin.com/", category: "Food", type: "Official", icon: "🛵", thumbnail: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&q=80" }
 ];

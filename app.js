@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMap();
 
     // 2. UI Elements
-    const sheetTabs = document.querySelectorAll('.sheet-tab');
-    let currentTab = 'Wisdom'; // Wisdom, Official, Online
+    const rankingBar = document.getElementById('ranking-bar');
 
     sheetTabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -24,6 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
             renderListByTab(currentTab);
         });
     });
+
+    function renderRankingBar() {
+        const allData = [...SAMPLE_OFFLINE_DATA, ...SAMPLE_ONLINE_DATA];
+        const top5 = allData.sort((a,b) => parseFloat(b.discount) - parseFloat(a.discount)).slice(0, 10);
+        
+        rankingBar.innerHTML = '';
+        top5.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'rank-item';
+            div.innerHTML = `<span class="rank-num">${index+1}</span> ${item.icon} ${item.name.substring(0,10)}... <span style="color:#ff3b30;">-${item.discount}</span>`;
+            div.onclick = () => showImmersiveModal(item);
+            rankingBar.appendChild(div);
+        });
+    }
+    renderRankingBar();
 
     document.getElementById('btn-login').addEventListener('click', () => {
         alert("잡스 감성 로그인: Apple ID로 로그인 기능을 준비 중입니다.");
@@ -225,9 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
             discountBar.style.height = `${h}%`;
         }, 300);
 
-        document.getElementById('modal-link-btn').onclick = () => {
-            if (item.link) window.open(item.link, '_blank');
-            else alert("매장 상세 페이지로 안내합니다.");
+        // Navigation Links
+        document.getElementById('btn-naver').onclick = () => {
+            window.open(`https://map.naver.com/v5/search/${encodeURIComponent(item.name)}`, '_blank');
+        };
+        document.getElementById('btn-kakao').onclick = () => {
+            window.open(`https://map.kakao.com/link/search/${encodeURIComponent(item.name)}`, '_blank');
         };
     }
 
@@ -236,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateMapMarkers(mode) {
-        // Clear old markers
         markers.forEach(m => map.removeLayer(m));
         markers = [];
         if (mode === 'Online') return;
@@ -245,21 +261,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentCategory !== 'all') {
             data = data.filter(item => item.category === currentCategory);
         }
+        
+        // Filter by Tab Type (Official vs Wisdom)
+        if (currentTab === 'Wisdom') {
+            data = data.filter(item => item.type === 'Wisdom');
+        } else if (currentTab === 'Official') {
+            data = data.filter(item => item.type === 'Official');
+        }
 
         data.forEach(item => {
-            const marker = L.marker([item.location.lat, item.location.lng]).addTo(map);
+            const isHot = parseFloat(item.discount) >= 50;
+            const priceIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div class="price-marker ${isHot ? 'hot' : ''}">
+                        <span class="icon">${item.icon || '📍'}</span>
+                        <span class="price">${item.price}</span>
+                       </div>`,
+                iconSize: [80, 30],
+                iconAnchor: [40, 15]
+            });
+
+            const marker = L.marker([item.location.lat, item.location.lng], { icon: priceIcon }).addTo(map);
             
-            // Apply Golden Aura for > 50% discount
-            if (parseInt(item.discount) >= 50) {
+            if (isHot) {
                 L.circleMarker([item.location.lat, item.location.lng], {
-                    radius: 20,
-                    className: 'golden-aura',
-                    stroke: false,
-                    fillOpacity: 1
+                    radius: 20, className: 'golden-aura', stroke: false, fillOpacity: 0.6
                 }).addTo(map);
             }
 
-            marker.bindPopup(`<b>${item.name}</b><br>${item.price} (${item.discount} 할인)`);
+            marker.on('click', () => showImmersiveModal(item));
             markers.push(marker);
         });
     }
