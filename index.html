@@ -53,14 +53,15 @@
             <div class="floating-overlay">
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="main-search" placeholder="브랜드, 품목, 지역 검색...">
+                    <input type="text" id="main-search" placeholder="연극, 할인 품목, 지역 검색...">
                 </div>
-                <!-- Mini Category Pills -->
+                <!-- Expanded Category Pills -->
                 <div class="category-pills">
                     <span class="pill active" data-cat="all">전체</span>
-                    <span class="pill" data-cat="Grocery">마트/식품</span>
-                    <span class="pill" data-cat="Tech">전자기기</span>
-                    <span class="pill" data-cat="Life">생활용품</span>
+                    <span class="pill" data-cat="Culture">연극/공연</span>
+                    <span class="pill" data-cat="Grocery">식품/마트</span>
+                    <span class="pill" data-cat="Tech">가전/IT</span>
+                    <span class="pill" data-cat="Life">생활/문화</span>
                 </div>
             </div>
 
@@ -81,13 +82,13 @@
             <div class="sheet-content">
                 <!-- Tab Menu -->
                 <div class="sheet-tabs">
-                    <div class="sheet-tab active" data-tab="Wisdom">실시간 민간정보</div>
+                    <div class="sheet-tab active" data-tab="Wisdom">실시간 나눔정보</div>
                     <div class="sheet-tab" data-tab="Official">실시간 매장할인</div>
                     <div class="sheet-tab" data-tab="Online">실시간 온라인공구</div>
                 </div>
 
                 <p style="font-size: 0.85rem; color: var(--apple-gray); margin-bottom: 20px; text-align: center;">
-                    <b id="status-date">2026. 04. 02.</b> 기준 파격 정보입니다.
+                    <b id="status-date">2026. 04. 03.</b> 기준 지혜로운 공유 정보입니다.
                 </p>
                 
                 <div id="item-list">
@@ -105,6 +106,11 @@
             <div class="modal-content">
                 <img id="modal-img" src="" alt="">
                 <h1 id="modal-title">One More Thing...</h1>
+                <div id="modal-phone-box" style="text-align: center; margin-bottom: 20px;">
+                    <a href="tel:000-0000" id="modal-phone-btn" class="apple-btn-outline" style="padding: 10px 30px; display: inline-block; text-decoration: none;">
+                        <i class="fa-solid fa-phone"></i>&nbsp; 확인 전화하기
+                    </a>
+                </div>
                 <div class="savings-visual">
                     <div class="bar-container">
                         <div class="bar market" id="market-bar" style="height: 100%;"></div>
@@ -119,6 +125,9 @@
                 <div class="modal-description" id="modal-desc">
                     이 할인은 잡스가 설계한 듯 정교한 가격 가치를 제공합니다...
                 </div>
+                <p class="disclaimer-text" style="font-size: 0.75rem; color: #ff3b30; margin-top: 25px; text-align: center; line-height: 1.4;">
+                    ⚠️ <b>방문 전 주의사항:</b> 본 정보는 실시간 제보를 기반으로 하며, 방문 시점에 따라 재고가 소진되거나 가격이 변동될 수 있습니다. <b>반드시 상기 버튼을 통해 전화 확인 후 이동해 주시기 바랍니다.</b> (플랫폼 면책 공고)
+                </p>
                 <button id="modal-link-btn" class="apple-btn" style="width: 100%; height: 52px; font-size: 1.1rem; margin-top: 30px;">
                     지금 바로 혜택 받기
                 </button>

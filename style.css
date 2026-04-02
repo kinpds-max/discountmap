@@ -547,16 +547,27 @@ header {
     opacity: 0.8;
 }
 
-/* Golden Aura for Map Markers */
+/* Golden Aura - Static & Elegant */
 .golden-aura {
     background: rgba(255, 215, 0, 0.4);
-    box-shadow: 0 0 20px #ffd700;
-    animation: aura-expand 2s infinite ease-out;
+    box-shadow: 0 0 15px #ffd700;
+    border-radius: 50%;
+    animation: aura-pulse 3s infinite ease-in-out;
 }
 
-@keyframes aura-expand {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(3); opacity: 0; }
+@keyframes aura-pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+.pulse-marker {
+    background: var(--apple-blue);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 8px rgba(0, 102, 204, 0.5);
 }
 
 .hidden {

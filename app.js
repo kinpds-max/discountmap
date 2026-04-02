@@ -201,12 +201,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const desc = document.getElementById('modal-desc');
         const discountBar = document.getElementById('discounted-bar');
         const percent = document.getElementById('modal-save-percent');
+        const phoneBtn = document.getElementById('modal-phone-btn');
 
         modal.classList.remove('hidden');
         img.src = item.thumbnail;
         title.innerText = item.name;
         desc.innerText = `${item.name}은(는) 잡스가 설계한 듯 정교한 가격 가치를 제공합니다. 시중가 ${item.original_price} 대비 약 ${item.discount} 할인된 ${item.price}에 만나보세요.`;
         percent.innerText = `-${item.discount}`;
+        
+        // Update Phone Link
+        if (item.phone) {
+            phoneBtn.href = `tel:${item.phone}`;
+            phoneBtn.innerHTML = `<i class="fa-solid fa-phone"></i>&nbsp; 확인 전화하기 (${item.phone})`;
+            document.getElementById('modal-phone-box').style.display = 'block';
+        } else {
+            document.getElementById('modal-phone-box').style.display = 'none';
+        }
 
         // Animate Bar
         discountBar.style.height = '0%';
@@ -217,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('modal-link-btn').onclick = () => {
             if (item.link) window.open(item.link, '_blank');
-            else alert("매장으로 안내합니다: (내비게이션 연동 시뮬레이션)");
+            else alert("매장 상세 페이지로 안내합니다.");
         };
     }
 
