@@ -237,17 +237,95 @@ header {
   margin-left: 8px;
 }
 
-/* Animations */
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+/* Leaflet Specific Customization */
+.leaflet-container {
+    background: var(--apple-black) !important;
 }
 
-.verified-mark {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: -10px;
-  right: -10px;
+.leaflet-tile {
+    filter: brightness(0.8) contrast(1.1) saturate(0.5); /* Apple Dark Map Feel */
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+    margin-right: 20px !important;
+    margin-bottom: 50px !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.leaflet-control-zoom a {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(10px);
+    color: var(--apple-black) !important;
+    border: none !important;
+}
+
+/* Category Pills */
+.category-pills {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.pill {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pill.active {
+    background: var(--apple-black);
+    color: white;
+    border-color: var(--apple-black);
+    transform: scale(1.05);
+}
+
+/* Locator Button */
+#btn-locate {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 950;
+    color: var(--apple-blue);
+    transition: transform 0.2s;
+}
+
+#btn-locate:active {
+    transform: scale(0.9);
+}
+
+/* Animation for custom markers */
+.pulse-marker {
+    background: var(--apple-blue);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
 }

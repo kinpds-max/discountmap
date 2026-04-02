@@ -6,8 +6,9 @@
     <title>전국허브 | National Discount Map</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Kakao Maps API (Requires Key) -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_API_KEY&libraries=services"></script>
+    <!-- Leaflet Map (No API Key Required for Basic Use) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
 
@@ -15,25 +16,36 @@
         <!-- Jobs-style Header -->
         <header>
             <div class="logo">
-                <i class="fa-solid fa-compass"></i>
+                <i class="fa-solid fa-bolt-lightning" style="color: #ff9f0a;"></i>
                 전국<span>허브</span>
             </div>
             <nav class="nav-links">
-                <a href="#about">Philosophy</a>
-                <a href="#report">Report</a>
-                <a href="#my">Account</a>
-            </nav>
+                <a href="#" id="btn-share"><i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+                <a href="#" id="btn-notif"><i class="fa-regular fa-bell"></i></a>
+            </div>
         </header>
 
         <!-- Main Map Area -->
         <div id="map-container">
             <div id="map"></div>
             
+            <!-- Locator Button -->
+            <button id="btn-locate" title="내 위치 찾기">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
+
             <!-- Search & Filter Controls -->
             <div class="floating-overlay">
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="지역이나 품목을 검색하세요 (예: 연남동 삼겹살, 아이폰)">
+                    <input type="text" id="main-search" placeholder="브랜드, 품목, 지역 검색...">
+                </div>
+                <!-- Mini Category Pills -->
+                <div class="category-pills">
+                    <span class="pill active" data-cat="all">전체</span>
+                    <span class="pill" data-cat="Grocery">마트/식품</span>
+                    <span class="pill" data-cat="Tech">전자기기</span>
+                    <span class="pill" data-cat="Life">생활용품</span>
                 </div>
             </div>
 
